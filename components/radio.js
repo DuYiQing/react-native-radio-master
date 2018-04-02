@@ -33,7 +33,8 @@ export default class RadioModal extends Component{
 			//this.props.onValueChange(indexInit)
 	}
 	createInner(child,index,props){
-	const disabled=props?child[this.props.options.disabled]:child.props.disabled;	
+	const disabled=props?child[this.props.options.disabled]:child.props.disabled;
+	const selected=props?child[this.props.options.selected]:child.props.selected;	
     const childC=props?child[this.props.options.value]:child.props.children;
     const values=props?child[this.props.options.id]:child.props.value;
     const hightlight=props?this.state.indexa===child[this.props.options.id]:this.state.indexa===child.props.value;
@@ -48,6 +49,7 @@ export default class RadioModal extends Component{
   		      onclick={this.click.bind(this)}
               hightlight={hightlight}
 			  disabled={disabled}
+			  selected={selected}
               seledImg={this.props.seledImg}
               selImg={this.props.selImg}
 			  selnoneImg={this.props.selnoneImg}
@@ -90,11 +92,10 @@ class Raio2 extends Component{
 			   style={[{marginRight:15,width:(width-80)/2,height:24},this.props.initStyle]}
 			   onPress={this.click.bind(this,this.props.value,this.props.child)}>
   				<View  style={{flex:1,flexDirection:'row',alignItems:'center'}} >
-					<Text style={[{color:this.props.disabled?this.props.noneColor||'#dfdfdf':this.props.txtColor||'#414141' , width:width/4, marginRight:width/4, marginLeft : 10, fontSize: 20}, this.props.textStyle] }>{this.props.child}</Text>
-					{this.props.disabled&&!this.props.hightlight&&<Image source={imgUrlNone} style={[{width:40,height:40,marginRight:7},this.props.imageStyle]}/>}
-					{this.props.disabled&&this.props.hightlight&&<Image source={imgUrl} style={[{width:40,height:40,marginRight:7},this.props.imageStyle]}/>}
-					{!this.props.disabled&&<Image source={imgUrl} style={[{width:40,height:40,marginRight:7},this.props.imageStyle]}/>}
-  				 
+					{this.props.disabled&&!this.props.hightlight&&<Image source={imgUrlNone} style={{width:16,height:16,marginRight:7}}/>}
+					{this.props.disabled&&this.props.hightlight&&<Image source={imgUrl} style={{width:16,height:16,marginRight:7}}/>}
+					{!this.props.disabled&&<Image source={imgUrl} style={{width:16,height:16,marginRight:10}}/>}
+					<Text style={{color:this.props.disabled?this.props.noneColor||'#dfdfdf':this.props.selected?'rgb(46,203,229)':this.props.txtColor||'#414141'}}>{this.props.child}</Text>
   				</View>
 			</TouchableHighlight>
 		)
