@@ -89,7 +89,7 @@ class Raio2 extends Component{
 		return(
 		    <TouchableHighlight
 			   underlayColor='transparent'
-			   style={[{marginRight:15,width:(width-80)/2,height:24},this.props.initStyle]}
+			   style={[{marginRight:15,width:(width-166)/2,height:24},this.props.initStyle]}
 			   onPress={this.click.bind(this,this.props.value,this.props.child)}>
   				<View  style={{flex:1,flexDirection:'row',alignItems:'center'}} >
 					{this.props.disabled&&!this.props.hightlight&&<Image source={imgUrlNone} style={{width:16,height:16,marginRight:7}}/>}
